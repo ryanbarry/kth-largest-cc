@@ -11,4 +11,8 @@ class BinaryHeap {
 
  private:
   std::vector<int> h;
+
+  void upheap();
+  void swap(int, int);
+  int getParentIndex(int);
 };
