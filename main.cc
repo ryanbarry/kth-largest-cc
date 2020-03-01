@@ -1,5 +1,7 @@
-#include <queue>
-typedef std::priority_queue<int> PrioQ;
+//#include <queue>
+//typedef std::priority_queue<int> PrioQ;
+#include "BinaryHeap.h"
+typedef BinaryHeap PrioQ;
 
 int main(int argc, char *argv[]) {
   int arr[] = {1,3,9,4,7,6,8,2,5};

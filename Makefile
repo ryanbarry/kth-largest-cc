@@ -1,7 +1,7 @@
 .PHONY: clean
 
-kthlargest: main.cc
-	c++ main.cc -o kthlargest
+kthlargest: main.cc BinaryHeap.cc
+	c++ main.cc BinaryHeap.cc -o kthlargest
 
 clean:
 	rm kthlargest
