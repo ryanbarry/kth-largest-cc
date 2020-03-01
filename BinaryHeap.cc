@@ -10,7 +10,9 @@ void BinaryHeap::push(int i) {
 }
 
 void BinaryHeap::pop() {
+  h[0] = h.back();
   h.pop_back();
+  downheap();
 }
 
 int BinaryHeap::top() {
@@ -31,6 +33,25 @@ void BinaryHeap::upheap() {
   }
 }
 
+void BinaryHeap::downheap() {
+  int currentElement = 0,
+    rightChildIdx = getRightChildIndex(currentElement),
+    rightChildVal = h[rightChildIdx],
+    leftChildIdx = getLeftChildIndex(currentElement),
+    leftChildVal = h[leftChildIdx];
+
+  while(h[currentElement] < leftChildVal && h[currentElement] < rightChildVal) {
+    int swapIndex = leftChildVal < rightChildVal ? rightChildIdx : leftChildIdx;
+    swap(currentElement, swapIndex);
+    currentElement = swapIndex;
+
+    rightChildIdx = getRightChildIndex(currentElement);
+    rightChildVal = h[rightChildIdx];
+    leftChildIdx = getLeftChildIndex(currentElement);
+    leftChildVal = h[leftChildIdx];
+  }
+}
+
 void BinaryHeap::swap(int lIdx, int rIdx) {
   int tmp = h[lIdx];
   h[lIdx] = h[rIdx];
@@ -39,4 +60,12 @@ void BinaryHeap::swap(int lIdx, int rIdx) {
 
 int BinaryHeap::getParentIndex(int childIdx) {
   return (childIdx-1)/2;
+}
+
+int BinaryHeap::getLeftChildIndex(int parentIdx) {
+  return (parentIdx*2)+1;
+}
+
+int BinaryHeap::getRightChildIndex(int parentIdx) {
+  return (parentIdx*2)+2;
 }
