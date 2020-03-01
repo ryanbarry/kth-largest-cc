@@ -40,7 +40,7 @@ void BinaryHeap::downheap() {
     leftChildIdx = getLeftChildIndex(currentElement),
     leftChildVal = h[leftChildIdx];
 
-  while(h[currentElement] < leftChildVal && h[currentElement] < rightChildVal) {
+  while(h[currentElement] < leftChildVal || h[currentElement] < rightChildVal) {
     int swapIndex = leftChildVal < rightChildVal ? rightChildIdx : leftChildIdx;
     swap(currentElement, swapIndex);
     currentElement = swapIndex;
